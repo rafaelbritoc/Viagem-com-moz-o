@@ -76,6 +76,8 @@
       backdrop-filter: blur(12px);
       position: relative;
       z-index: 2;
+      /* Estilo para garantir que o conteúdo seja visível imediatamente */
+      min-width: 250px;
     }
 
     .gallery {
@@ -91,10 +93,13 @@
 
     .gallery img {
       width: 100%;
+      height: auto; /* Garante que a imagem mantenha a proporção */
+      object-fit: cover; /* Útil para uniformizar o tamanho se necessário */
       border-radius: 20px;
       box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
       transition: transform 0.5s ease, box-shadow 0.5s ease, opacity 1s ease;
       opacity: 0;
+      /* Aplica a animação fadeIn após o carregamento da imagem */
       animation: fadeIn 2s forwards;
     }
 
@@ -133,7 +138,7 @@
     <p>Rumo a Ouro Preto e Belo Horizonte!</p>
   </header>
 
-  <div id="countdown"></div>
+  <div id="countdown">Carregando contagem...</div>
 
   <div class="gallery">
     <img src="https://images.unsplash.com/photo-1668207890768-17b01e2d5853?auto=format&fit=crop&w=1200&q=80" alt="Ouro Preto - vista panorâmica">
@@ -148,28 +153,39 @@
   </footer>
 
   <script>
-    // Contagem regressiva
-    const viagemData = new Date("October 22, 2025 00:00:00").getTime();
-    const countdown = document.getElementById("countdown");
+    // Data da viagem: 22 de Outubro de 2025
+    const tripDate = new Date("October 22, 2025 00:00:00").getTime();
+    const countdownElement = document.getElementById("countdown");
 
-    const x = setInterval(() => {
-      const agora = new Date().getTime();
-      const distancia = viagemData - agora;
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = tripDate - now;
 
-      const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
-      const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
-      const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+      // Cálculo de tempo
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      countdown.innerHTML = ${dias}d ${horas}h ${minutos}m ${segundos}s;
-
-      if (distancia < 0) {
+      if (distance < 0) {
+        // Para a contagem regressiva
         clearInterval(x);
-        countdown.innerHTML = "É hora de partir! ✨🚙💖";
+        countdownElement.innerHTML = "É hora de partir! ✨🚙💖";
+        return; // Sai da função
       }
-    }, 1000);
 
-    // Corações animados
+      // Exibe a contagem
+      countdownElement.innerHTML = ${days}d ${hours}h ${minutes}m ${seconds}s;
+    }
+
+    // 1. Chamada inicial para preencher imediatamente o elemento
+    updateCountdown();
+
+    // 2. Chama a função a cada segundo
+    const x = setInterval(updateCountdown, 1000);
+
+
+    // Corações animados (Código original OK, mantido)
     const heartsContainer = document.querySelector('.hearts');
     const emojis = ["💖", "💞", "💫", "🌟", "✨"];
     setInterval(() => {
