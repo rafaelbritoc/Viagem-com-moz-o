@@ -26,4 +26,87 @@
       animation: glow 3s infinite alternate;
     }
     @keyframes glow {
-      from { text-shadow: 0 0 10px #ffccff, 0 0 20px #
+      from { text-shadow: 0 0 10px #ffccff, 0 0 20px #ff66cc; }
+      to { text-shadow: 0 0 20px #ffffff, 0 0 30px #ff99cc; }
+    }
+    #countdown {
+      font-size: 2rem;
+      margin-top: 20px;
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 20px 40px;
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+    }
+    .gallery {
+      margin: 3rem auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 15px;
+      width: 90%;
+      max-width: 1100px;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+    }
+    footer {
+      margin-top: 2rem;
+      font-size: 1rem;
+      opacity: 0.8;
+    }
+    footer span {
+      color: #ffccff;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>💞 Rafa & Fabrício 💞</h1>
+    <p>Rumo a Ouro Preto e Belo Horizonte!</p>
+  </header>
+
+  <div id="countdown"></div>
+
+  <div class="gallery">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Igreja_de_S%C3%A3o_Francisco_de_Assis%2C_Ouro_Preto%2C_Minas_Gerais%2C_Brasil.jpg/1280px-Igreja_de_S%C3%A3o_Francisco_de_Assis%2C_Ouro_Preto%2C_Minas_Gerais%2C_Brasil.jpg" alt="Ouro Preto">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Ouro_Preto_-_Minas_Gerais_%2831776548587%29.jpg/1280px-Ouro_Preto_-_Minas_Gerais_%2831776548587%29.jpg" alt="Casarões de Ouro Preto">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Pra%C3%A7a_da_Liberdade_Belo_Horizonte_5.jpg/1280px-Pra%C3%A7a_da_Liberdade_Belo_Horizonte_5.jpg" alt="Praça da Liberdade BH">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Ouro_Preto_-_MG.jpg/1280px-Ouro_Preto_-_MG.jpg" alt="Vista panorâmica Ouro Preto">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Pal%C3%A1cio_das_Artes_Belo_Horizonte.jpg/1280px-Pal%C3%A1cio_das_Artes_Belo_Horizonte.jpg" alt="Palácio das Artes BH">
+  </div>
+
+  <footer>
+    <p>🌙 Que venha a viagem dos sonhos — <span>22 de Outubro de 2025</span> 🌄</p>
+  </footer>
+
+  <script>
+    const viagemData = new Date("October 22, 2025 00:00:00").getTime();
+
+    const x = setInterval(function() {
+      const agora = new Date().getTime();
+      const distancia = viagemData - agora;
+
+      const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+      const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerHTML =
+        dias + "d " + horas + "h " + minutos + "m " + segundos + "s ";
+
+      if (distancia < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML = "É hora de viajar! ✈️💖";
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
