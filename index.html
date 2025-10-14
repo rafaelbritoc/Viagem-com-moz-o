@@ -1,5 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rafa & Fabrício — Contagem Regressiva para Ouro Preto e BH</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      text-align: center;
+      overflow-x: hidden;
+      background: radial-gradient(circle at top, #1b1b3a, #0d0d1a);
+      min-height: 100vh;
+    }
+
+    /* Fundo animado com corações */
+    .hearts {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .heart {
+      position: absolute;
+      color: #ffb6e6;
+      font-size: 1.5rem;
+      animation: float 8s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) scale(0.8) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1.2) rotate(360deg); opacity: 0; }
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 20px;
+      backdrop-filter: blur(10px);
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin: 0;
+      text-shadow: 0 0 20px #ff99cc;
+      animation: pulse 2.5s infinite alternate;
+    }
+
+    @keyframes pulse {
+      from { text-shadow: 0 0 10px #ff66cc, 0 0 20px #ffb6e6; }
+      to { text-shadow: 0 0 25px #ffffff, 0 0 35px #ff99cc; }
+    }
+
+    p {
+      font-weight: 300;
+      margin-top: 5px;
+    }
+
+    #countdown {
+      font-size: 2rem;
+      margin: 30px auto;
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 20px 50px;
+      border-radius: 25px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(12px);
+      position: relative;
+      z-index: 2;
+      min-width: 250px;
+    }
+
+    .gallery {
+      margin: 3rem auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      width: 90%;
+      max-width: 1100px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+      transition: transform 0.5s ease, box-shadow 0.5s ease, opacity 1s ease;
+      opacity: 0;
+      animation: fadeIn 2s forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(255, 255, 255, 0.25);
+    }
+
+    footer {
+      margin-top: 3rem;
+      font-size: 1rem;
+      opacity: 0.9;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 15px 0;
+      backdrop-filter: blur(8px);
+      position: relative;
+      z-index: 2;
+    }
+
+    footer span {
+      color: #ffccff;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <div class="hearts"></div>
+
+  <header>
+    <h1>💞 Rafa & Fabrício 💞</h1>
+    <p>Rumo a Ouro Preto e Belo Horizonte!</p>
+  </header>
+
+  <div id="countdown">Carregando contagem...</div>
+
+  <div class="gallery">
+    <img src="img/op2.jpg" alt="Centro histórico de Ouro Preto">
+    <img src="img/op3.jpg" alt="Arquitetura colonial Ouro Preto">
+    <img src="img/op4.jpg" alt="Ouro Preto - vista panorâmica 2">
+    <img src="img/bh1.jpg" alt="Praça da Liberdade - Belo Horizonte">
+    <img src="img/bh2.jpg" alt="Belo Horizonte à noite">
+  </div>
+
+  <footer>
+    <p>🌅 Rumo a novos horizontes — <span>22 de Outubro de 2025</span> 🚗💫</p>
+  </footer>
+
   <script>
-    // CORREÇÃO FINAL: Usando formato ISO 8601 (universal) para garantir que a contagem funcione em todos os fusos horários.
+    // Data da viagem: 22 de Outubro de 2025
+    // CORREÇÃO FINAL DE FUSO HORÁRIO (Formato ISO para universalizar)
     const VIAGEM_DATA = new Date("2025-10-22T00:00:00").getTime();
     const countdownElement = document.getElementById("countdown");
 
@@ -9,7 +162,7 @@
           const now = new Date().getTime();
           const distance = VIAGEM_DATA - now;
 
-          // Se a distância for negativa (já passou a data), exibe a mensagem final.
+          // Se a distância for negativa, a viagem já passou.
           if (distance < 0) {
             clearInterval(x);
             countdownElement.innerHTML = "É hora de partir! ✨🚙💖";
@@ -34,7 +187,7 @@
         
     }
 
-    // Corações animados (Código original OK, mantido)
+    // Corações animados (Código original OK)
     const heartsContainer = document.querySelector('.hearts');
     const emojis = ["💖", "💞", "💫", "🌟", "✨"];
     setInterval(() => {
@@ -47,4 +200,5 @@
       setTimeout(() => heart.remove(), 9000);
     }, 800);
   </script>
-  
+</body>
+</html>
