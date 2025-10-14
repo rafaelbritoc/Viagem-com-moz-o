@@ -76,7 +76,6 @@
       backdrop-filter: blur(12px);
       position: relative;
       z-index: 2;
-      /* Estilo para garantir que o conteúdo seja visível imediatamente */
       min-width: 250px;
     }
 
@@ -93,13 +92,12 @@
 
     .gallery img {
       width: 100%;
-      height: auto; /* Garante que a imagem mantenha a proporção */
-      object-fit: cover; /* Útil para uniformizar o tamanho se necessário */
+      height: auto;
+      object-fit: cover;
       border-radius: 20px;
       box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
       transition: transform 0.5s ease, box-shadow 0.5s ease, opacity 1s ease;
       opacity: 0;
-      /* Aplica a animação fadeIn após o carregamento da imagem */
       animation: fadeIn 2s forwards;
     }
 
@@ -141,7 +139,6 @@
   <div id="countdown">Carregando contagem...</div>
 
   <div class="gallery">
-    <img src="img/op1.jpg" alt="Ouro Preto - vista panorâmica 1">
     <img src="img/op2.jpg" alt="Centro histórico de Ouro Preto">
     <img src="img/op3.jpg" alt="Arquitetura colonial Ouro Preto">
     <img src="img/op4.jpg" alt="Ouro Preto - vista panorâmica 2">
@@ -153,13 +150,12 @@
     <p>🌅 Rumo a novos horizontes — <span>22 de Outubro de 2025</span> 🚗💫</p>
   </footer>
 
- <script>
+  <script>
     // Data da viagem: 22 de Outubro de 2025
-    // Mudamos a variável de tripDate para a globalmente mais segura VIAGEM_DATA
     const VIAGEM_DATA = new Date("October 22, 2025 00:00:00").getTime();
     const countdownElement = document.getElementById("countdown");
 
-    // Adiciona uma verificação para garantir que o elemento existe
+    // Adiciona uma verificação para garantir que o elemento 'countdown' existe
     if (countdownElement) {
         
         function updateCountdown() {
@@ -180,6 +176,7 @@
           const segundos = Math.floor((distance % (1000 * 60)) / 1000);
 
           // Exibe a contagem formatada
+          // CORREÇÃO FINAL: Usando template literal para a string.
           countdownElement.innerHTML = ${dias}d ${horas}h ${minutos}m ${segundos}s;
         }
 
@@ -189,64 +186,7 @@
         // 2. Chama a função a cada segundo
         const x = setInterval(updateCountdown, 1000);
         
-    } else {
-        // Se o elemento não for encontrado (nunca deveria ocorrer neste código)
-        console.error("Elemento 'countdown' não encontrado.");
     }
-
-
-    // Corações animados (Mantido, pois não é o problema principal)
-    const heartsContainer = document.querySelector('.hearts');
-    const emojis = ["💖", "💞", "💫", "🌟", "✨"];
-    setInterval(() => {
-      const heart = document.createElement('div');
-      heart.classList.add('heart');
-      heart.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-      heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.animationDuration = (6 + Math.random() * 4) + 's';
-      heartsContainer.appendChild(heart);
-      setTimeout(() => heart.remove(), 9000);
-    }, 800);
-  </script>
-
-     unction updateCountdown() {
-      const now = new Date().getTime();
-      const distance = tripDate - now;
-
-      // ADICIONE ESTAS DUAS LINHAS DE TESTE TEMPORARIAMENTE
-      const currentDate = new Date(now).toLocaleString('pt-BR');
-      const targetDate = new Date(tripDate).toLocaleString('pt-BR');
-
-      // EXIBE AS DATAS NO LUGAR DA CONTAGEM
-      countdownElement.innerHTML = Data Atual do PC: ${currentDate}<br> Data Alvo: ${targetDate};
-
-      // (Remova o restante da função por enquanto)
-    }
-
-    // O resto do script fica igual...
-      // Cálculo de tempo
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      if (distance < 0) {
-        // Para a contagem regressiva
-        clearInterval(x);
-        countdownElement.innerHTML = "É hora de partir! ✨🚙💖";
-        return; // Sai da função
-      }
-
-      // Exibe a contagem
-      countdownElement.innerHTML = ${days}d ${hours}h ${minutes}m ${seconds}s;
-    }
-
-    // 1. Chamada inicial para preencher imediatamente o elemento
-    updateCountdown();
-
-    // 2. Chama a função a cada segundo
-    const x = setInterval(updateCountdown, 1000);
-
 
     // Corações animados (Código original OK, mantido)
     const heartsContainer = document.querySelector('.hearts');
@@ -263,5 +203,3 @@
   </script>
 </body>
 </html>
-
-
