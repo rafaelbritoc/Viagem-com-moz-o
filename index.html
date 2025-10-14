@@ -157,10 +157,21 @@
     const tripDate = new Date("October 22, 2025 00:00:00").getTime();
     const countdownElement = document.getElementById("countdown");
 
-    function updateCountdown() {
+     unction updateCountdown() {
       const now = new Date().getTime();
       const distance = tripDate - now;
 
+      // ADICIONE ESTAS DUAS LINHAS DE TESTE TEMPORARIAMENTE
+      const currentDate = new Date(now).toLocaleString('pt-BR');
+      const targetDate = new Date(tripDate).toLocaleString('pt-BR');
+
+      // EXIBE AS DATAS NO LUGAR DA CONTAGEM
+      countdownElement.innerHTML = Data Atual do PC: ${currentDate}<br> Data Alvo: ${targetDate};
+
+      // (Remova o restante da função por enquanto)
+    }
+
+    // O resto do script fica igual...
       // Cálculo de tempo
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
       const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
