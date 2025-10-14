@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+[16:47, 10/14/2025] Rafael: <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
@@ -23,51 +23,137 @@
     h1 {
       font-size: 2.5rem;
       margin: 0;
-      animation: glow 3s infinite alternate;
+      animation: glo…
+[16:53, 10/14/2025] Rafael: <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rafa & Fabrício — Contagem Regressiva para Ouro Preto e BH</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      text-align: center;
+      overflow-x: hidden;
+      background: radial-gradient(circle at top, #1b1b3a, #0d0d1a);
+      min-height: 100vh;
     }
-    @keyframes glow {
-      from { text-shadow: 0 0 10px #ffccff, 0 0 20px #ff66cc; }
-      to { text-shadow: 0 0 20px #ffffff, 0 0 30px #ff99cc; }
+
+    /* Fundo animado com corações */
+    .hearts {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
     }
+
+    .heart {
+      position: absolute;
+      color: #ffb6e6;
+      font-size: 1.5rem;
+      animation: float 8s linear infinite;
+      opacity: 0.8;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) scale(0.8) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1.2) rotate(360deg); opacity: 0; }
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 20px;
+      backdrop-filter: blur(10px);
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin: 0;
+      text-shadow: 0 0 20px #ff99cc;
+      animation: pulse 2.5s infinite alternate;
+    }
+
+    @keyframes pulse {
+      from { text-shadow: 0 0 10px #ff66cc, 0 0 20px #ffb6e6; }
+      to { text-shadow: 0 0 25px #ffffff, 0 0 35px #ff99cc; }
+    }
+
+    p {
+      font-weight: 300;
+      margin-top: 5px;
+    }
+
     #countdown {
       font-size: 2rem;
-      margin-top: 20px;
+      margin: 30px auto;
       display: inline-block;
       background: rgba(255, 255, 255, 0.15);
-      padding: 20px 40px;
-      border-radius: 20px;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(10px);
+      padding: 20px 50px;
+      border-radius: 25px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(12px);
+      position: relative;
+      z-index: 2;
     }
+
     .gallery {
       margin: 3rem auto;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 15px;
+      gap: 20px;
       width: 90%;
       max-width: 1100px;
+      position: relative;
+      z-index: 2;
     }
+
     .gallery img {
       width: 100%;
       border-radius: 20px;
       box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      transition: transform 0.5s ease, box-shadow 0.5s ease, opacity 1s ease;
+      opacity: 0;
+      animation: fadeIn 2s forwards;
     }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
     .gallery img:hover {
       transform: scale(1.05);
-      box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+      box-shadow: 0 10px 25px rgba(255, 255, 255, 0.25);
     }
+
     footer {
-      margin-top: 2rem;
+      margin-top: 3rem;
       font-size: 1rem;
-      opacity: 0.8;
+      opacity: 0.9;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 15px 0;
+      backdrop-filter: blur(8px);
+      position: relative;
+      z-index: 2;
     }
+
     footer span {
       color: #ffccff;
+      font-weight: 500;
     }
   </style>
 </head>
 <body>
+  <div class="hearts"></div>
+
   <header>
     <h1>💞 Rafa & Fabrício 💞</h1>
     <p>Rumo a Ouro Preto e Belo Horizonte!</p>
@@ -76,21 +162,23 @@
   <div id="countdown"></div>
 
   <div class="gallery">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Igreja_de_S%C3%A3o_Francisco_de_Assis%2C_Ouro_Preto%2C_Minas_Gerais%2C_Brasil.jpg/1280px-Igreja_de_S%C3%A3o_Francisco_de_Assis%2C_Ouro_Preto%2C_Minas_Gerais%2C_Brasil.jpg" alt="Ouro Preto">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Ouro_Preto_-_Minas_Gerais_%2831776548587%29.jpg/1280px-Ouro_Preto_-_Minas_Gerais_%2831776548587%29.jpg" alt="Casarões de Ouro Preto">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Pra%C3%A7a_da_Liberdade_Belo_Horizonte_5.jpg/1280px-Pra%C3%A7a_da_Liberdade_Belo_Horizonte_5.jpg" alt="Praça da Liberdade BH">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Ouro_Preto_-_MG.jpg/1280px-Ouro_Preto_-_MG.jpg" alt="Vista panorâmica Ouro Preto">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Pal%C3%A1cio_das_Artes_Belo_Horizonte.jpg/1280px-Pal%C3%A1cio_das_Artes_Belo_Horizonte.jpg" alt="Palácio das Artes BH">
+    <img src="https://images.unsplash.com/photo-1668207890768-17b01e2d5853?auto=format&fit=crop&w=1200&q=80" alt="Ouro Preto - vista panorâmica">
+    <img src="https://images.unsplash.com/photo-1603126857734-9ebc1449b9b3?auto=format&fit=crop&w=1200&q=80" alt="Centro histórico de Ouro Preto">
+    <img src="https://images.unsplash.com/photo-1599414211322-49b1d07d2b95?auto=format&fit=crop&w=1200&q=80" alt="Praça da Liberdade - Belo Horizonte">
+    <img src="https://images.unsplash.com/photo-1618241379425-6c5d32b0f3df?auto=format&fit=crop&w=1200&q=80" alt="Arquitetura colonial Ouro Preto">
+    <img src="https://images.unsplash.com/photo-1632596859024-3e9b6b68a735?auto=format&fit=crop&w=1200&q=80" alt="Belo Horizonte à noite">
   </div>
 
   <footer>
-    <p>🌙 Que venha a viagem dos sonhos — <span>22 de Outubro de 2025</span> 🌄</p>
+    <p>🌅 Rumo a novos horizontes — <span>22 de Outubro de 2025</span> 🚗💫</p>
   </footer>
 
   <script>
+    // Contagem regressiva
     const viagemData = new Date("October 22, 2025 00:00:00").getTime();
+    const countdown = document.getElementById("countdown");
 
-    const x = setInterval(function() {
+    const x = setInterval(() => {
       const agora = new Date().getTime();
       const distancia = viagemData - agora;
 
@@ -99,14 +187,26 @@
       const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
       const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
 
-      document.getElementById("countdown").innerHTML =
-        dias + "d " + horas + "h " + minutos + "m " + segundos + "s ";
+      countdown.innerHTML = ${dias}d ${horas}h ${minutos}m ${segundos}s;
 
       if (distancia < 0) {
         clearInterval(x);
-        document.getElementById("countdown").innerHTML = "É hora de viajar! ✈️💖";
+        countdown.innerHTML = "É hora de partir! ✨🚙💖";
       }
     }, 1000);
+
+    // Corações animados
+    const heartsContainer = document.querySelector('.hearts');
+    const emojis = ["💖", "💞", "💫", "🌟", "✨"];
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (6 + Math.random() * 4) + 's';
+      heartsContainer.appendChild(heart);
+      setTimeout(() => heart.remove(), 9000);
+    }, 800);
   </script>
 </body>
 </html>
