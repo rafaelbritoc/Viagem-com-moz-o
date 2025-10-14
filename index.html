@@ -151,18 +151,17 @@
   </footer>
 
   <script>
-    // Data da viagem: 22 de Outubro de 2025
-    const VIAGEM_DATA = new Date("October 22, 2025 00:00:00").getTime();
+    // CORREÇÃO FINAL: Usando formato ISO 8601 (universal) para garantir que a contagem funcione em todos os fusos horários.
+    const VIAGEM_DATA = new Date("2025-10-22T00:00:00").getTime();
     const countdownElement = document.getElementById("countdown");
 
-    // Adiciona uma verificação para garantir que o elemento 'countdown' existe
     if (countdownElement) {
         
         function updateCountdown() {
           const now = new Date().getTime();
           const distance = VIAGEM_DATA - now;
 
-          // Se a distância for negativa, a viagem já passou.
+          // Se a distância for negativa (já passou a data), exibe a mensagem final.
           if (distance < 0) {
             clearInterval(x);
             countdownElement.innerHTML = "É hora de partir! ✨🚙💖";
@@ -176,7 +175,6 @@
           const segundos = Math.floor((distance % (1000 * 60)) / 1000);
 
           // Exibe a contagem formatada
-          // CORREÇÃO FINAL: Usando template literal para a string.
           countdownElement.innerHTML = ${dias}d ${horas}h ${minutos}m ${segundos}s;
         }
 
